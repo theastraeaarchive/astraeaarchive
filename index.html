@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>astraeaarchive</title>
+  <title>The Astraea Archive</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -60,6 +60,21 @@
       to { opacity: 1; }
     }
 
+    @keyframes float-glow {
+      0%, 100% {
+        transform: translateY(0);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                     0 0 25px rgba(160, 150, 255, 0.3),
+                     0 0 40px rgba(140, 130, 255, 0.2);
+      }
+      50% {
+        transform: translateY(-6px);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                     0 0 35px rgba(160, 150, 255, 0.4),
+                     0 0 50px rgba(140, 130, 255, 0.3);
+      }
+    }
+
     .container {
       height: 100vh;
       display: flex;
@@ -72,9 +87,15 @@
     }
 
     .header {
-      font-size: 2.5rem;
-      color: #e0d4ff;
-      margin-bottom: 40px;
+      font-size: 3.2rem;
+      color: #e6e1ff;
+      margin-bottom: 50px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+               0 0 25px rgba(160, 150, 255, 0.3),
+               0 0 40px rgba(140, 130, 255, 0.2);
+      letter-spacing: 2px;
+      font-weight: 300;
+      animation: float-glow 6s ease-in-out infinite;
     }
 
     .constellation {
@@ -120,7 +141,7 @@
 <body>
   <div class="stars"></div>
   <div class="container">
-    <div class="header">astraeaarchive</div>
+    <div class="header">The Astraea Archive</div>
     <div class="constellation">
       <!-- Stars for "7" shape -->
       <div id="s1" class="star" style="top: 5%; left: 20%;" title="Navistra">✵<div class="label">Navistra</div></div>
