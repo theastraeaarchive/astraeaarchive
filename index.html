@@ -38,22 +38,30 @@
       background-size: cover;
     }
 
-    .s::before {
-      background-image: radial-gradient(1px 1px at 20px 30px, white, transparent),
-                        radial-gradient(1px 1px at 100px 200px, white, transparent),
-                        radial-gradient(1px 1px at 300px 100px, white, transparent),
-                        radial-gradient(1px 1px at 400px 500px, white, transparent),
-                        radial-gradient(1px 1px at 700px 300px, white, transparent);
-      animation: twinkle 4s infinite alternate;
+    .stars::before {
+      background-image: 
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 75% 75%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.3), transparent);
+      animation: twinkle 6s infinite alternate;
+      z-index: -1;
     }
 
-    .s::after {
-      background-image: radial-gradient(1px 1px at 50px 100px, #ccc, transparent),
-                        radial-gradient(1px 1px at 600px 200px, #ccc, transparent),
-                        radial-gradient(1px 1px at 800px 400px, #ccc, transparent),
-                        radial-gradient(1px 1px at 300px 600px, #ccc, transparent);
-      animation: twinkle 6s infinite alternate;
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 5% 90%, rgba(200,200,255,0.2), transparent),
+        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(220,220,255,0.25), transparent),
+        radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.15), transparent);
+      animation: twinkle 9s infinite alternate;
+      z-index: -1;
     }
+
 
     @keyframes twinkle {
       from { opacity: 0.2; }
