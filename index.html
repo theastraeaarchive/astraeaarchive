@@ -122,6 +122,8 @@
 
     .star {
       animation: starPulse 5s ease-in-out infinite;
+      transition: transform 0.2s ease;
+      will-change: transform;
     }
 
     @keyframes float-glow {
@@ -331,6 +333,18 @@
         ctx.stroke();
       }
     }
+
+      const stars = document.querySelectorAll('.star');
+      document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 10; // Adjust 10 for strength
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+
+      stars.forEach((star, index) => {
+        const depth = 1 + (index / 10); // gives slight variation
+        star.style.transform = `translate(${x * depth}px, ${y * depth}px)` +
+                               ` scale(1)`; // Keep scaling neutral
+      });
+    });
   </script>
 
 </body>
