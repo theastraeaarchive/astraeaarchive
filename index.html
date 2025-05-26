@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Astraea Archive</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -16,22 +16,19 @@
       overflow: hidden;
     }
 
-    .stars {
+    .stars, .sparkles {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      background: #0b0c2a;
-      overflow: hidden;
+      top: 0;
+      left: 0;
       z-index: -1;
+      pointer-events: none;
     }
 
     .stars::before, .stars::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       background-repeat: repeat;
@@ -39,7 +36,7 @@
     }
 
     .stars::before {
-      background-image: 
+      background-image:
         radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4), transparent),
         radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.2), transparent),
         radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.3), transparent),
@@ -47,7 +44,6 @@
         radial-gradient(1px 1px at 75% 75%, rgba(255,255,255,0.25), transparent),
         radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.3), transparent);
       animation: twinkle 6s infinite alternate;
-      z-index: -1;
     }
 
     .stars::after {
@@ -59,32 +55,19 @@
         radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.3), transparent),
         radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.15), transparent);
       animation: twinkle 9s infinite alternate;
-      z-index: -1;
     }
 
-    .sparkles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .sparkles::before,
-    .sparkles::after {
+    .sparkles::before, .sparkles::after {
       content: '';
       position: absolute;
       width: 100%;
       height: 100%;
       background-image: 
-        radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.7) 50%, transparent),
-        radial-gradient(2px 2px at 35% 75%, rgba(255,255,255,0.6) 50%, transparent),
-        radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.8) 50%, transparent),
-        radial-gradient(2px 2px at 60% 85%, rgba(255,255,255,0.5) 50%, transparent),
-        radial-gradient(2px 2px at 20% 50%, rgba(255,255,255,0.6) 50%, transparent);
+        radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 35% 75%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 60% 85%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 20% 50%, rgba(255,255,255,0.6), transparent);
       animation: sparkleMove 12s infinite linear, sparkleTwinkle 5s infinite ease-in-out;
       opacity: 0.6;
       background-repeat: no-repeat;
@@ -96,34 +79,28 @@
       opacity: 0.4;
     }
 
-    @keyframes sparkleMove {
-      0%   { transform: translateY(0); }
-      100% { transform: translateY(-30px); }
-    }
-
-    @keyframes sparkleTwinkle {
-      0%, 100% { opacity: 0.2; }
-      50%      { opacity: 1; }
-    }
-
     @keyframes twinkle {
       from { opacity: 0.2; }
       to { opacity: 1; }
     }
 
-    @keyframes Pulse {
+    @keyframes sparkleMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-30px); }
+    }
+
+    @keyframes sparkleTwinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes starPulse {
       0%, 100% {
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
       }
       50% {
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
       }
-    }
-
-    .star {
-      animation: starPulse 5s ease-in-out infinite;
-      transition: transform 0.2s ease;
-      will-change: transform;
     }
 
     @keyframes float-glow {
@@ -195,7 +172,7 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
       z-index: 2;
       animation: starPulse 5s ease-in-out infinite;
     }
@@ -204,15 +181,8 @@
       transform: scale(1.2);
       background: rgba(255, 255, 255, 0.4);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
-              0 0 35px rgba(180, 160, 255, 0.5);
+                  0 0 35px rgba(180, 160, 255, 0.5);
     }
-
-    .hover-line {
-      stroke: #fff !important;
-      stroke-width: 2.5 !important;
-      filter: drop-shadow(0 0 3px white);
-    }
-
 
     .label {
       position: absolute;
@@ -244,108 +214,72 @@
       <div class="subtitle">where dreams find gravity</div>
     </div>
     <div class="constellation">
-      <div id="s1" class="star" style="top: 5%; left: 20%;" title="Navistra">✵<div class="label">Navistra<span class="coords">RA 01h • Dec +20°</span></div></div>
-      <div id="s2" class="star" style="top: 5%; left: 45%;" title="Ludostar">🎮<div class="label">Ludostar<span class="coords">RA 03h • Dec +42°</span></div></div>
-      <div id="s3" class="star" style="top: 5%; left: 70%;" title="Inkwellia">✍️<div class="label">Inkwellia<span class="coords">RA 05h • Dec -10°</span></div></div>
-      <div id="s4" class="star" style="top: 25%; left: 60%;" title="Astrarium">🌌<div class="label">Astrarium<span class="coords">RA 08h • Dec +25°</span></div></div>
-      <div id="s5" class="star" style="top: 45%; left: 50%;" title="Lumenith">🎨<div class="label">Lumenith<span class="coords">RA 10h • Dec +05°</span></div></div>
-      <div id="s6" class="star" style="top: 65%; left: 40%;" title="Orbitrieve">🔭<div class="label">Orbitrieve<span class="coords">RA 13h • Dec -18°</span></div></div>
-      <div id="s7" class="star" style="top: 85%; left: 30%;" title="Remnora">🗂️<div class="label">Remnora<span class="coords">RA 16h • Dec +33°</span></div></div>
-
+      <div id="s1" class="star" style="top: 5%; left: 20%;">✵<div class="label">Navistra<span class="coords">RA 01h • Dec +20°</span></div></div>
+      <div id="s2" class="star" style="top: 5%; left: 45%;">🎮<div class="label">Ludostar<span class="coords">RA 03h • Dec +42°</span></div></div>
+      <div id="s3" class="star" style="top: 5%; left: 70%;">✍️<div class="label">Inkwellia<span class="coords">RA 05h • Dec -10°</span></div></div>
+      <div id="s4" class="star" style="top: 25%; left: 60%;">🌌<div class="label">Astrarium<span class="coords">RA 08h • Dec +25°</span></div></div>
+      <div id="s5" class="star" style="top: 45%; left: 50%;">🎨<div class="label">Lumenith<span class="coords">RA 10h • Dec +05°</span></div></div>
+      <div id="s6" class="star" style="top: 65%; left: 40%;">🔭<div class="label">Orbitrieve<span class="coords">RA 13h • Dec -18°</span></div></div>
+      <div id="s7" class="star" style="top: 85%; left: 30%;">🗂️<div class="label">Remnora<span class="coords">RA 16h • Dec +33°</span></div></div>
       <canvas id="star-lines" width="1000" height="600" style="position:absolute;top:0;left:0;z-index:1;"></canvas>
     </div>
   </div>
 
   <script>
-    const starData = [
-      { id: 's1' }, { id: 's2' }, { id: 's3' },
-      { id: 's4' }, { id: 's5' }, { id: 's6' }, { id: 's7' }
-    ];
-  
-    let lineSegments = [];
+    const starData = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
+    let originalPositions = [];
+    let canvas, ctx;
 
     window.onload = () => {
-      const canvas = document.getElementById('star-lines');
-      const ctx = canvas.getContext('2d');
-      ctx.strokeStyle = '#aaa';
-      ctx.lineWidth = 2;
-      ctx.setLineDash([3, 5]);
+      canvas = document.getElementById('star-lines');
+      ctx = canvas.getContext('2d');
+      const parentRect = document.querySelector('.constellation').getBoundingClientRect();
 
-      const positions = stars.map(({ id }) => {
-      const el = document.getElementById(id);
-      const rect = el.getBoundingClientRect();
-      const parentRect = el.parentElement.getBoundingClientRect();
-      return {
-          id,
+      originalPositions = starData.map(id => {
+        const el = document.getElementById(id);
+        const rect = el.getBoundingClientRect();
+        return {
+          el,
           x: rect.left + rect.width / 2 - parentRect.left,
-          y: rect.top + rect.height / 2 - parentRect.top,
-          el
+          y: rect.top + rect.height / 2 - parentRect.top
         };
       });
 
-      // Store line segments
-      lineSegments = [];
-      for (let i = 0; i < positions.length - 1; i++) {
-        lineSegments.push([positions[i], positions[i + 1]]);
-      }
-
-      drawLines(ctx, lineSegments);
-
-      // Add hover interaction
-      positions.forEach((pos, index) => {
-        const starEl = document.getElementById(pos.id);
-        starEl.addEventListener('mouseenter', () => {
-          highlightLine(index);
-        });
-        starEl.addEventListener('mouseleave', () => {
-          drawLines(ctx, lineSegments);
-        });
-      });
+      drawLines(originalPositions);
     };
 
-    function drawLines(ctx, segments) {
-      const canvas = document.getElementById('star-lines');
+    function drawLines(positions) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = '#aaa';
-      ctx.setLineDash([3, 5]);
-      ctx.lineWidth = 2;
       ctx.beginPath();
-      segments.forEach(([a, b]) => {
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-      });
+      ctx.setLineDash([3, 5]);
+      ctx.strokeStyle = '#aaa';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < positions.length - 1; i++) {
+        ctx.moveTo(positions[i].x, positions[i].y);
+        ctx.lineTo(positions[i + 1].x, positions[i + 1].y);
+      }
       ctx.stroke();
     }
 
-    function highlightLine(index) {
-      const canvas = document.getElementById('star-lines');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawLines(ctx, lineSegments);
-      if (lineSegments[index]) {
-        const [a, b] = lineSegments[index];
-        ctx.beginPath();
-        ctx.strokeStyle = '#fff';
-        ctx.setLineDash([]);
-        ctx.lineWidth = 2.5;
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-    }
+    document.addEventListener('mousemove', e => {
+      const xOffset = (e.clientX / window.innerWidth - 0.5) * 10;
+      const yOffset = (e.clientY / window.innerHeight - 0.5) * 10;
 
-      const stars = document.querySelectorAll('.star');
-      document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 10; // Adjust 10 for strength
-      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      const shiftedPositions = [];
 
-      stars.forEach((star, index) => {
-        const depth = 1 + (index / 10); // gives slight variation
-        star.style.transform = `translate(${x * depth}px, ${y * depth}px)` +
-                               ` scale(1)`; // Keep scaling neutral
+      originalPositions.forEach((star, i) => {
+        const depth = 1 + i / 10;
+        const dx = xOffset * depth;
+        const dy = yOffset * depth;
+        star.el.style.transform = `translate(${dx}px, ${dy}px)`;
+        shiftedPositions.push({
+          x: star.x + dx,
+          y: star.y + dy
+        });
       });
+
+      drawLines(shiftedPositions);
     });
   </script>
-
 </body>
 </html>
