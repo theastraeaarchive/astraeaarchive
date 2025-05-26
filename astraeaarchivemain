@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Inner Constellation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>astraeaarchive</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      background: radial-gradient(ellipse at center, #0b0c2a 0%, #000 100%);
-      color: #fff;
+      padding: 0;
+      height: 100%;
+      background: #0b0c2a;
       font-family: 'Georgia', serif;
+      color: #fff;
       overflow-x: hidden;
     }
 
-    .starfield {
+    body::before {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: url('https://i.imgur.com/3eZ7H0v.png') repeat;
+      background: radial-gradient(ellipse at center, rgba(13,17,49,0.8), #000);
       z-index: -1;
-      animation: moveStars 200s linear infinite;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      box-shadow: 
+        1000px 200px #fff, 200px 400px #fff, 300px 300px #fff,
+        700px 500px #fff, 500px 100px #fff, 400px 600px #fff,
+        900px 300px #fff, 800px 700px #fff, 1200px 400px #fff;
+      animation: moveStars 100s linear infinite;
     }
 
     @keyframes moveStars {
-      from { background-position: 0 0; }
-      to { background-position: -10000px 10000px; }
+      from { transform: translateY(0); }
+      to { transform: translateY(-1000px); }
     }
 
     .container {
@@ -38,7 +52,7 @@
     }
 
     .star {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -77,9 +91,9 @@
   </style>
 </head>
 <body>
-  <div class="starfield"></div>
+  <div class="stars"></div>
   <div class="container">
-    <div class="header">My Inner Constellation</div>
+    <div class="header">astraeaarchive</div>
 
     <a href="#" class="star" title="Poem">
       ✍️<div class="label">Poem</div>
