@@ -98,6 +98,7 @@
       justify-content: center;
       text-decoration: none;
       transition: 0.3s ease;
+      z-index: 2;
     }
 
     .star:hover {
@@ -120,6 +121,7 @@
       background: #aaa;
       height: 2px;
       transform-origin: left center;
+      z-index: 1;
     }
   </style>
 </head>
@@ -128,22 +130,22 @@
   <div class="container">
     <div class="header">astraeaarchive</div>
     <div class="constellation">
-      <!-- Arranged to form a stylized "7" shape across full space -->
-      <a href="#" class="star" style="top: 0%; left: 5%;" title="Poem">✍️<div class="label">Poem</div></a>
-      <a href="#" class="star" style="top: 0%; left: 45%;" title="Game">🎮<div class="label">Game</div></a>
-      <a href="#" class="star" style="top: 0%; left: 85%;" title="Music">🎧<div class="label">Music</div></a>
+      <!-- Redesigned to resemble a natural "7" shape with proper spacing and lines behind -->
+      <a href="#" class="star" style="top: 5%; left: 10%;" title="Poem">✍️<div class="label">Poem</div></a>
+      <a href="#" class="star" style="top: 5%; left: 45%;" title="Game">🎮<div class="label">Game</div></a>
+      <a href="#" class="star" style="top: 5%; left: 80%;" title="Music">🎧<div class="label">Music</div></a>
       <a href="#" class="star" style="top: 30%; left: 65%;" title="Dream">🌙<div class="label">Dream</div></a>
-      <a href="#" class="star" style="top: 50%; left: 55%;" title="About">👁️<div class="label">About</div></a>
-      <a href="#" class="star" style="top: 65%; left: 45%;" title="Thoughts">🌀<div class="label">Thoughts</div></a>
-      <a href="#" class="star" style="top: 85%; left: 35%;" title="Archive">🗂️<div class="label">Archive</div></a>
+      <a href="#" class="star" style="top: 50%; left: 50%;" title="About">👁️<div class="label">About</div></a>
+      <a href="#" class="star" style="top: 65%; left: 35%;" title="Thoughts">🌀<div class="label">Thoughts</div></a>
+      <a href="#" class="star" style="top: 80%; left: 20%;" title="Archive">🗂️<div class="label">Archive</div></a>
 
-      <!-- Connecting lines -->
-      <div class="line" style="top: 5%; left: 5%; width: 400px; transform: rotate(0deg);"></div>
-      <div class="line" style="top: 5%; left: 45%; width: 400px; transform: rotate(0deg);"></div>
-      <div class="line" style="top: 5%; left: 85%; width: 80px; transform: rotate(115deg);"></div>
-      <div class="line" style="top: 28%; left: 65%; width: 60px; transform: rotate(105deg);"></div>
-      <div class="line" style="top: 48%; left: 55%; width: 50px; transform: rotate(105deg);"></div>
-      <div class="line" style="top: 63%; left: 45%; width: 50px; transform: rotate(105deg);"></div>
+      <!-- Clean constellation lines in "7" shape -->
+      <div class="line" style="top: 7%; left: 10%; width: 280px; transform: rotate(0deg);"></div>
+      <div class="line" style="top: 7%; left: 45%; width: 280px; transform: rotate(0deg);"></div>
+      <div class="line" style="top: 9%; left: 80%; width: 150px; transform: rotate(120deg);"></div>
+      <div class="line" style="top: 28%; left: 65%; width: 120px; transform: rotate(135deg);"></div>
+      <div class="line" style="top: 48%; left: 50%; width: 120px; transform: rotate(135deg);"></div>
+      <div class="line" style="top: 63%; left: 35%; width: 120px; transform: rotate(135deg);"></div>
     </div>
   </div>
 </body>
