@@ -66,7 +66,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 40px;
       z-index: 1;
       position: relative;
       text-align: center;
@@ -75,13 +74,14 @@
     .header {
       font-size: 2.5rem;
       color: #e0d4ff;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     .constellation {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 100vw;
+      height: 70vh;
+      max-width: 1000px;
     }
 
     .star {
@@ -128,21 +128,22 @@
   <div class="container">
     <div class="header">astraeaarchive</div>
     <div class="constellation">
-      <a href="#" class="star" style="top: 10%; left: 45%;" title="Poem">✍️<div class="label">Poem</div></a>
-      <a href="#" class="star" style="top: 25%; left: 60%;" title="Game">🎮<div class="label">Game</div></a>
-      <a href="#" class="star" style="top: 40%; left: 50%;" title="Music">🎧<div class="label">Music</div></a>
-      <a href="#" class="star" style="top: 60%; left: 30%;" title="Dream">🌙<div class="label">Dream</div></a>
-      <a href="#" class="star" style="top: 75%; left: 45%;" title="About">👁️<div class="label">About</div></a>
-      <a href="#" class="star" style="top: 30%; left: 20%;" title="Thoughts">🌀<div class="label">Thoughts</div></a>
-      <a href="#" class="star" style="top: 85%; left: 70%;" title="Archive">🗂️<div class="label">Archive</div></a>
+      <!-- Arranged to form a stylized "7" shape across full space -->
+      <a href="#" class="star" style="top: 0%; left: 5%;" title="Poem">✍️<div class="label">Poem</div></a>
+      <a href="#" class="star" style="top: 0%; left: 45%;" title="Game">🎮<div class="label">Game</div></a>
+      <a href="#" class="star" style="top: 0%; left: 85%;" title="Music">🎧<div class="label">Music</div></a>
+      <a href="#" class="star" style="top: 30%; left: 65%;" title="Dream">🌙<div class="label">Dream</div></a>
+      <a href="#" class="star" style="top: 50%; left: 55%;" title="About">👁️<div class="label">About</div></a>
+      <a href="#" class="star" style="top: 65%; left: 45%;" title="Thoughts">🌀<div class="label">Thoughts</div></a>
+      <a href="#" class="star" style="top: 85%; left: 35%;" title="Archive">🗂️<div class="label">Archive</div></a>
 
-      <!-- Lines to simulate constellation connections -->
-      <div class="line" style="top: 15%; left: 47%; width: 80px; transform: rotate(30deg);"></div>
-      <div class="line" style="top: 32%; left: 58%; width: 40px; transform: rotate(120deg);"></div>
-      <div class="line" style="top: 43%; left: 48%; width: 60px; transform: rotate(135deg);"></div>
-      <div class="line" style="top: 55%; left: 33%; width: 50px; transform: rotate(45deg);"></div>
-      <div class="line" style="top: 70%; left: 43%; width: 90px; transform: rotate(-25deg);"></div>
-      <div class="line" style="top: 35%; left: 25%; width: 60px; transform: rotate(70deg);"></div>
+      <!-- Connecting lines -->
+      <div class="line" style="top: 5%; left: 5%; width: 400px; transform: rotate(0deg);"></div>
+      <div class="line" style="top: 5%; left: 45%; width: 400px; transform: rotate(0deg);"></div>
+      <div class="line" style="top: 5%; left: 85%; width: 80px; transform: rotate(115deg);"></div>
+      <div class="line" style="top: 28%; left: 65%; width: 60px; transform: rotate(105deg);"></div>
+      <div class="line" style="top: 48%; left: 55%; width: 50px; transform: rotate(105deg);"></div>
+      <div class="line" style="top: 63%; left: 45%; width: 50px; transform: rotate(105deg);"></div>
     </div>
   </div>
 </body>
