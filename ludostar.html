@@ -1,99 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ludostar | The Astraea Archive</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ludostar – The Astraea Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
+      padding: 0;
       background: #0b0c2a;
-      font-family: 'EB Garamond', serif;
-      color: white;
-      overflow: hidden;
-    }
-
-    .background {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .title {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 2.8rem;
-      color: #e6e1ff;
-      text-shadow: 0 0 10px rgba(255,255,255,0.3);
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 60px;
-      gap: 60px;
-    }
-
-    .node {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 10px rgba(255,255,255,0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
       color: #fff;
-      transition: 0.3s;
-      text-align: center;
-      position: relative;
+      font-family: 'EB Garamond', serif;
     }
 
-    .node:hover {
-      background: rgba(255,255,255,0.2);
-      box-shadow: 0 0 25px rgba(180,160,255,0.6);
-      transform: scale(1.05);
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: #0b0c2a;
     }
 
-    .node .name {
-      margin-top: 10px;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-    }
-
-    .node .emoji {
-      font-size: 1.8rem;
-    }
-
-    .back-link {
+    .stars::before, .stars::after {
+      content: '';
       position: absolute;
-      top: 20px;
-      left: 20px;
-      color: #aaa;
-      text-decoration: none;
-      font-size: 1rem;
+      width: 100%; height: 100%;
+      background-repeat: repeat;
+      background-size: cover;
     }
 
-    .back-link:hover {
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.2), transparent);
+      animation: twinkle 6s infinite alternate;
+    }
+
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 40% 80%, rgba(200,200,255,0.2), transparent),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.1), transparent);
+      animation: twinkle 8s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #e6e1ff;
+      animation: float-glow 12s ease-in-out infinite;
+    }
+
+    p.intro {
+      font-size: 1.1rem;
+      color: #cfc8ff;
+      margin-bottom: 50px;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .section p {
+      font-size: 1rem;
+      color: #bfb7ff;
+      opacity: 0.85;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    a {
+      color: #cfc8ff;
       text-decoration: underline;
+    }
+
+    @keyframes float-glow {
+      0%, 100% {
+        transform: translateY(0);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3),
+                     0 0 25px rgba(160, 150, 255, 0.2);
+      }
+      50% {
+        transform: translateY(-6px);
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.5),
+                     0 0 35px rgba(160, 150, 255, 0.4);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
-  <a href="index.html" class="back-link">← Return to Archive</a>
-  <div class="title">Ludostar</div>
-  <div class="grid">
-    <a href="gamevault.html" class="node"><div class="emoji">🗃️</div><div class="name">Gamevault</div></a>
-    <a href="nebulog.html" class="node"><div class="emoji">🪐</div><div class="name">Nebulog</div></a>
-    <a href="celestabits.html" class="node"><div class="emoji">✨</div><div class="name">Celestabits</div></a>
-    <a href="devdust.html" class="node"><div class="emoji">🌌</div><div class="name">Devdust</div></a>
-    <a href="stellore.html" class="node"><div class="emoji">📜</div><div class="name">Stellore</div></a>
-    <a href="galaxipedia.html" class="node"><div class="emoji">📘</div><div class="name">Galaxipedia</div></a>
+  <div class="stars"></div>
+  <div class="container">
+    <h1>Ludostar</h1>
+    <p class="intro">A constellation dedicated to everything games — from ideas and devlogs to fragments of old code and cosmic lessons learned.</p>
+
+    <div class="section">
+      <h2>Gamevault</h2>
+      <p>A showcase of all your finished games, jam entries, and little prototypes that found their own gravity.</p>
+    </div>
+
+    <div class="section">
+      <h2>Nebulog</h2>
+      <p>Your personal devlog nebula — swirling updates, design thoughts, progress screenshots, and curious bugs.</p>
+    </div>
+
+    <div class="section">
+      <h2>Celestabits</h2>
+      <p>Small reusable game assets, experiments, particle effects, shaders, UI bits, or anything modular and magical.</p>
+    </div>
+
+    <div class="section">
+      <h2>Devdust</h2>
+      <p>Scraps of half-formed ideas, discarded mechanics, raw notes — the stardust that didn’t quite form a planet (yet).</p>
+    </div>
+
+    <p><a href="index.html">← Back to Star Map</a></p>
   </div>
 </body>
 </html>
