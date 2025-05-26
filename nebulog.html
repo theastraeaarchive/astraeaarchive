@@ -63,16 +63,17 @@
 
     @keyframes float-glow {
       0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
+      50% { transform: translateY(-6px); }
     }
 
     .container {
       min-height: 100vh;
+      padding: 80px 20px 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 80px 20px 40px;
+      z-index: 1;
     }
 
     .header {
@@ -83,23 +84,23 @@
                    0 0 40px rgba(140, 130, 255, 0.2);
       font-weight: 300;
       animation: float-glow 12s ease-in-out infinite;
+      margin-bottom: 20px;
     }
 
     .subtitle {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      margin-bottom: 60px;
+      font-size: 1.3rem;
       color: #cfc8ff;
-      opacity: 0.8;
       font-style: italic;
+      margin-bottom: 50px;
+      opacity: 0.8;
     }
 
     .section-description {
       max-width: 800px;
-      font-size: 1.1rem;
       color: #dcd9ff;
+      font-size: 1.1rem;
+      line-height: 1.7;
       opacity: 0.85;
-      line-height: 1.6;
     }
 
     .section-description h2 {
@@ -110,18 +111,20 @@
     }
 
     .back-link {
-      display: inline-block;
       margin-top: 60px;
       font-size: 1rem;
-      color: #cfc8ff;
+      color: #bbb;
       text-decoration: none;
-      opacity: 0.7;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 6px;
       transition: 0.3s ease;
     }
 
     .back-link:hover {
-      opacity: 1;
-      text-shadow: 0 0 8px rgba(160, 150, 255, 0.5);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: #fff;
     }
   </style>
 </head>
@@ -136,13 +139,14 @@
     <div class="section-description">
       <h2>Welcome to Nebulog</h2>
       <p>
-        Nebulog is the celestial journal of the Ludostar system — a place to record updates, document ideas in orbit, and reflect on the design journey. Think of it as a developer’s telescope, capturing the comets of creativity and the occasional asteroid of frustration.
-        <br><br>
-        Whether it's project updates, thoughts on creative challenges, or bursts of inspiration, this is where you’ll find the narrative side of development.
+        Nebulog is the celestial journal of the Ludostar system — a place to record updates, document ideas in orbit, and reflect on the design journey.
+      </p>
+      <p>
+        Think of it as a developer’s telescope, capturing the comets of creativity and the occasional asteroid of frustration. Whether it's project updates, thoughts on creative challenges, or bursts of inspiration, this is where you’ll find the narrative side of development.
       </p>
     </div>
 
-    <a href="ludostar.html" class="back-link">← Return to Ludostar</a>
+    <a href="ludostar.html" class="back-link">← Back to Ludostar</a>
   </div>
 </body>
 </html>
