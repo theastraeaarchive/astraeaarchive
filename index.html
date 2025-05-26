@@ -38,7 +38,7 @@
       background-size: cover;
     }
 
-    .stars::before {
+    .s::before {
       background-image: radial-gradient(1px 1px at 20px 30px, white, transparent),
                         radial-gradient(1px 1px at 100px 200px, white, transparent),
                         radial-gradient(1px 1px at 300px 100px, white, transparent),
@@ -47,7 +47,7 @@
       animation: twinkle 4s infinite alternate;
     }
 
-    .stars::after {
+    .s::after {
       background-image: radial-gradient(1px 1px at 50px 100px, #ccc, transparent),
                         radial-gradient(1px 1px at 600px 200px, #ccc, transparent),
                         radial-gradient(1px 1px at 800px 400px, #ccc, transparent),
@@ -60,7 +60,7 @@
       to { opacity: 1; }
     }
 
-    @keyframes starPulse {
+    @keyframes Pulse {
       0%, 100% {
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
       }
@@ -142,14 +142,24 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
       z-index: 2;
+      animation: starPulse 5s ease-in-out infinite;
     }
 
     .star:hover {
-      background: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+      transform: scale(1.2);
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
+              0 0 35px rgba(180, 160, 255, 0.5);
     }
+
+    .hover-line {
+      stroke: #fff !important;
+      stroke-width: 2.5 !important;
+      filter: drop-shadow(0 0 3px white);
+    }
+
 
     .label {
       position: absolute;
@@ -197,31 +207,79 @@
       { id: 's1' }, { id: 's2' }, { id: 's3' },
       { id: 's4' }, { id: 's5' }, { id: 's6' }, { id: 's7' }
     ];
+  
+    let lineSegments = [];
 
     window.onload = () => {
       const canvas = document.getElementById('star-lines');
       const ctx = canvas.getContext('2d');
       ctx.strokeStyle = '#aaa';
       ctx.lineWidth = 2;
-      ctx.setLineDash([3, 5]); // Dotted line
+      ctx.setLineDash([3, 5]);
 
       const positions = stars.map(({ id }) => {
-        const el = document.getElementById(id);
-        const rect = el.getBoundingClientRect();
-        const parentRect = el.parentElement.getBoundingClientRect();
-        return {
+      const el = document.getElementById(id);
+      const rect = el.getBoundingClientRect();
+      const parentRect = el.parentElement.getBoundingClientRect();
+      return {
+          id,
           x: rect.left + rect.width / 2 - parentRect.left,
           y: rect.top + rect.height / 2 - parentRect.top,
+          el
         };
       });
 
-      ctx.beginPath();
-      ctx.moveTo(positions[0].x, positions[0].y);
-      for (let i = 1; i < positions.length; i++) {
-        ctx.lineTo(positions[i].x, positions[i].y);
+      // Store line segments
+      lineSegments = [];
+      for (let i = 0; i < positions.length - 1; i++) {
+        lineSegments.push([positions[i], positions[i + 1]]);
       }
-      ctx.stroke();
+
+      drawLines(ctx, lineSegments);
+
+      // Add hover interaction
+      positions.forEach((pos, index) => {
+        const starEl = document.getElementById(pos.id);
+        starEl.addEventListener('mouseenter', () => {
+          highlightLine(index);
+        });
+        starEl.addEventListener('mouseleave', () => {
+          drawLines(ctx, lineSegments);
+        });
+      });
     };
+
+    function drawLines(ctx, segments) {
+      const canvas = document.getElementById('star-lines');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#aaa';
+      ctx.setLineDash([3, 5]);
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      segments.forEach(([a, b]) => {
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+      });
+      ctx.stroke();
+    }
+
+    function highlightLine(index) {
+      const canvas = document.getElementById('star-lines');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawLines(ctx, lineSegments);
+      if (lineSegments[index]) {
+        const [a, b] = lineSegments[index];
+        ctx.beginPath();
+        ctx.strokeStyle = '#fff';
+        ctx.setLineDash([]);
+        ctx.lineWidth = 2.5;
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
   </script>
+
 </body>
 </html>
