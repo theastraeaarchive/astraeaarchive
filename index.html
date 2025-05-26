@@ -70,10 +70,8 @@
     }
 
     .star {
-      /* existing styles */
       animation: starPulse 5s ease-in-out infinite;
     }
-
 
     @keyframes float-glow {
       0%, 100% {
@@ -106,8 +104,8 @@
       color: #e6e1ff;
       margin-bottom: 80px;
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
-               0 0 25px rgba(160, 150, 255, 0.3),
-               0 0 40px rgba(140, 130, 255, 0.2);
+                   0 0 25px rgba(160, 150, 255, 0.3),
+                   0 0 40px rgba(140, 130, 255, 0.2);
       letter-spacing: 2px;
       font-weight: 300;
       animation: float-glow 12s ease-in-out infinite;
@@ -123,7 +121,6 @@
       letter-spacing: 1px;
       text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
     }
-
 
     .constellation {
       position: relative;
@@ -163,32 +160,42 @@
       width: 100%;
       font-family: 'EB Garamond', serif;
     }
+
+    .coords {
+      display: block;
+      font-size: 10px;
+      color: #777;
+      opacity: 0.6;
+      font-style: italic;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
   </style>
 </head>
 <body>
   <div class="stars"></div>
   <div class="container">
     <div class="header">
-      The Astraea Archive</div>
-    <div class="subtitle">where dreams find gravity</div>
+      The Astraea Archive
+      <div class="subtitle">where dreams find gravity</div>
+    </div>
     <div class="constellation">
-      <!-- Stars for "7" shape -->
-      <div id="s1" class="star" style="top: 5%; left: 20%;" title="Navistra">✵<div class="label">Navistra</div></div>
-      <div id="s2" class="star" style="top: 5%; left: 45%;" title="Ludostar">🎮<div class="label">Ludostar</div></div>
-      <div id="s3" class="star" style="top: 5%; left: 70%;" title="Inkwellia">✍️<div class="label">Inkwellia</div></div>
-      <div id="s4" class="star" style="top: 25%; left: 60%;" title="Astrarium">🌌<div class="label">Astrarium</div></div>
-      <div id="s5" class="star" style="top: 45%; left: 50%;" title="Lumenith">🎨<div class="label">Lumenith</div></div>
-      <div id="s6" class="star" style="top: 65%; left: 40%;" title="Orbitrieve">🔭<div class="label">Orbitrieve</div></div>
-      <div id="s7" class="star" style="top: 85%; left: 30%;" title="Remnora">🗂️<div class="label">Remnora</div></div>
+      <div id="s1" class="star" style="top: 5%; left: 20%;" title="Navistra">✵<div class="label">Navistra<span class="coords">RA 01h • Dec +20°</span></div></div>
+      <div id="s2" class="star" style="top: 5%; left: 45%;" title="Ludostar">🎮<div class="label">Ludostar<span class="coords">RA 03h • Dec +42°</span></div></div>
+      <div id="s3" class="star" style="top: 5%; left: 70%;" title="Inkwellia">✍️<div class="label">Inkwellia<span class="coords">RA 05h • Dec -10°</span></div></div>
+      <div id="s4" class="star" style="top: 25%; left: 60%;" title="Astrarium">🌌<div class="label">Astrarium<span class="coords">RA 08h • Dec +25°</span></div></div>
+      <div id="s5" class="star" style="top: 45%; left: 50%;" title="Lumenith">🎨<div class="label">Lumenith<span class="coords">RA 10h • Dec +05°</span></div></div>
+      <div id="s6" class="star" style="top: 65%; left: 40%;" title="Orbitrieve">🔭<div class="label">Orbitrieve<span class="coords">RA 13h • Dec -18°</span></div></div>
+      <div id="s7" class="star" style="top: 85%; left: 30%;" title="Remnora">🗂️<div class="label">Remnora<span class="coords">RA 16h • Dec +33°</span></div></div>
 
-      <!-- Canvas-based lines to perfectly align between star centers -->
       <canvas id="star-lines" width="1000" height="600" style="position:absolute;top:0;left:0;z-index:1;"></canvas>
     </div>
   </div>
 
   <script>
     const stars = [
-      { id: 's1' }, { id: 's2' }, { id: 's3' }, { id: 's4' }, { id: 's5' }, { id: 's6' }, { id: 's7' }
+      { id: 's1' }, { id: 's2' }, { id: 's3' },
+      { id: 's4' }, { id: 's5' }, { id: 's6' }, { id: 's7' }
     ];
 
     window.onload = () => {
@@ -196,6 +203,7 @@
       const ctx = canvas.getContext('2d');
       ctx.strokeStyle = '#aaa';
       ctx.lineWidth = 2;
+      ctx.setLineDash([3, 5]); // Dotted line
 
       const positions = stars.map(({ id }) => {
         const el = document.getElementById(id);
