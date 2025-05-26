@@ -3,46 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ludostar – The Astraea Archive</title>
+  <title>Ludostar | The Astraea Archive</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       background: #0b0c2a;
-      color: #fff;
       font-family: 'EB Garamond', serif;
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    .stars {
+    .stars, .sparkles {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
       z-index: -1;
-      background: #0b0c2a;
+      pointer-events: none;
     }
 
     .stars::before, .stars::after {
       content: '';
       position: absolute;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       background-repeat: repeat;
       background-size: cover;
     }
 
     .stars::before {
       background-image:
-        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.3), transparent),
-        radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.2), transparent);
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 75% 75%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.3), transparent);
       animation: twinkle 6s infinite alternate;
     }
 
     .stars::after {
       background-image:
-        radial-gradient(1px 1px at 40% 80%, rgba(200,200,255,0.2), transparent),
-        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.1), transparent);
-      animation: twinkle 8s infinite alternate;
+        radial-gradient(1px 1px at 5% 90%, rgba(200,200,255,0.2), transparent),
+        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(220,220,255,0.25), transparent),
+        radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.15), transparent);
+      animation: twinkle 9s infinite alternate;
+    }
+
+    .sparkles::before, .sparkles::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 35% 75%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 60% 85%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 20% 50%, rgba(255,255,255,0.6), transparent);
+      animation: sparkleMove 12s infinite linear, sparkleTwinkle 5s infinite ease-in-out;
+      opacity: 0.6;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .sparkles::after {
+      animation-delay: 4s, 2s;
+      opacity: 0.4;
     }
 
     @keyframes twinkle {
@@ -50,93 +84,163 @@
       to { opacity: 1; }
     }
 
+    @keyframes sparkleMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-30px); }
+    }
+
+    @keyframes sparkleTwinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes starPulse {
+      0%, 100% {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+      }
+    }
+
     .container {
-      padding: 80px 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
       text-align: center;
+      padding-top: 40px;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    .header {
+      font-size: 3.2rem;
       color: #e6e1ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                   0 0 25px rgba(160, 150, 255, 0.3),
+                   0 0 40px rgba(140, 130, 255, 0.2);
+      letter-spacing: 2px;
+      font-weight: 300;
       animation: float-glow 12s ease-in-out infinite;
-    }
-
-    p.intro {
-      font-size: 1.1rem;
-      color: #cfc8ff;
-      margin-bottom: 50px;
-      font-style: italic;
-      opacity: 0.8;
-    }
-
-    .section {
-      margin-bottom: 50px;
-    }
-
-    .section h2 {
-      font-size: 1.8rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-
-    .section p {
-      font-size: 1rem;
-      color: #bfb7ff;
-      opacity: 0.85;
-      margin: 0 auto;
-      max-width: 600px;
-    }
-
-    a {
-      color: #cfc8ff;
-      text-decoration: underline;
     }
 
     @keyframes float-glow {
       0%, 100% {
         transform: translateY(0);
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3),
-                     0 0 25px rgba(160, 150, 255, 0.2);
       }
       50% {
         transform: translateY(-6px);
-        text-shadow: 0 0 25px rgba(255, 255, 255, 0.5),
-                     0 0 35px rgba(160, 150, 255, 0.4);
       }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: #cfc8ff;
+      opacity: 0.8;
+      font-style: italic;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
+    }
+
+    .constellation {
+      position: relative;
+      width: 100vw;
+      height: 70vh;
+      max-width: 1000px;
+    }
+
+    .star {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+      z-index: 2;
+      animation: starPulse 5s ease-in-out infinite;
+    }
+
+    .star:hover {
+      transform: scale(1.2);
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
+                  0 0 35px rgba(180, 160, 255, 0.5);
+    }
+
+    .label {
+      position: absolute;
+      top: 75px;
+      font-size: 14px;
+      color: #aaa;
+      text-align: center;
+      width: 100%;
+    }
+
+    .coords {
+      display: block;
+      font-size: 10px;
+      color: #777;
+      opacity: 0.6;
+      font-style: italic;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .section-description {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+      font-family: 'EB Garamond', serif;
+      color: #dcd9ff;
+      opacity: 0.85;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .section-description h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #f0edff;
+      text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
     }
   </style>
 </head>
 <body>
   <div class="stars"></div>
+  <div class="sparkles"></div>
   <div class="container">
-    <h1>Ludostar</h1>
-    <p class="intro">A constellation dedicated to everything games — from ideas and devlogs to fragments of old code and cosmic lessons learned.</p>
-
-    <div class="section">
-      <h2>Gamevault</h2>
-      <p>A showcase of all your finished games, jam entries, and little prototypes that found their own gravity.</p>
+    <div class="header">
+      Ludostar
+      <div class="subtitle">the constellation of games</div>
+    </div>
+    <div class="constellation">
+      <a href="#" class="star" style="top: 5%; left: 20%;">🎮<div class="label">GameVault<span class="coords">RA 01h • Dec +12°</span></div></a>
+      <a href="#" class="star" style="top: 5%; left: 45%;">🌠<div class="label">Nebulog<span class="coords">RA 03h • Dec +22°</span></div></a>
+      <a href="#" class="star" style="top: 5%; left: 70%;">✨<div class="label">Celestabits<span class="coords">RA 05h • Dec -08°</span></div></a>
+      <a href="#" class="star" style="top: 25%; left: 60%;">🪐<div class="label">Devdust<span class="coords">RA 08h • Dec +15°</span></div></a>
     </div>
 
-    <div class="section">
-      <h2>Nebulog</h2>
-      <p>Your personal devlog nebula — swirling updates, design thoughts, progress screenshots, and curious bugs.</p>
+    <div class="section-description">
+      <h2>Welcome to Ludostar</h2>
+      <p>
+        Ludostar is the cosmic quadrant of Astraea Archive dedicated to interactive experiences and virtual worlds. 
+        Here you’ll find playable projects in the <strong>GameVault</strong>, thoughtful devlogs and ideas in the <strong>Nebulog</strong>,
+        glittering snippets and prototypes from <strong>Celestabits</strong>, and dusted notes from development in <strong>Devdust</strong>.
+        Everything in this galaxy orbits the magic of play.
+      </p>
     </div>
-
-    <div class="section">
-      <h2>Celestabits</h2>
-      <p>Small reusable game assets, experiments, particle effects, shaders, UI bits, or anything modular and magical.</p>
-    </div>
-
-    <div class="section">
-      <h2>Devdust</h2>
-      <p>Scraps of half-formed ideas, discarded mechanics, raw notes — the stardust that didn’t quite form a planet (yet).</p>
-    </div>
-
-    <p><a href="index.html">← Back to Star Map</a></p>
   </div>
 </body>
 </html>
