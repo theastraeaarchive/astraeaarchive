@@ -66,14 +66,19 @@
       50%      { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
     }
 
+    @keyframes float-glow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
     .container {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      position: relative;
-      padding-top: 40px;
+      padding: 80px 20px 100px;
+      z-index: 1;
     }
 
     .header {
@@ -84,20 +89,15 @@
                    0 0 40px rgba(140, 130, 255, 0.2);
       font-weight: 300;
       animation: float-glow 12s ease-in-out infinite;
+      margin-bottom: 20px;
     }
 
     .subtitle {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      margin-bottom: 60px;
+      font-size: 1.3rem;
       color: #cfc8ff;
-      opacity: 0.8;
       font-style: italic;
-    }
-
-    @keyframes float-glow {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
+      margin-bottom: 50px;
+      opacity: 0.8;
     }
 
     .constellation {
@@ -149,7 +149,7 @@
 
     .section-description {
       max-width: 800px;
-      margin: 0 auto 80px;
+      margin: 0 auto 60px;
       font-size: 1.1rem;
       color: #dcd9ff;
       opacity: 0.85;
@@ -162,6 +162,22 @@
       margin-bottom: 10px;
       color: #f0edff;
       text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
+    }
+
+    .back-link {
+      font-size: 1rem;
+      color: #bbb;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: #fff;
     }
   </style>
 </head>
@@ -179,7 +195,6 @@
       <a href="#" class="star" style="top: 40%; left: 65%;">🪐<div class="label">Devdust<span class="coords">RA 08h • Dec +15°</span></div></a>
       <a href="#" class="star" style="top: 55%; left: 50%;">📓<div class="label">Stellore<span class="coords">RA 10h • Dec +03°</span></div></a>
       <a href="#" class="star" style="top: 65%; left: 35%;">📚<div class="label">Galaxipedia<span class="coords">RA 12h • Dec -10°</span></div></a>
-      <a href="index.html" class="star" style="top: 80%; left: 50%;">🔙<div class="label">Back to Archive<span class="coords">RA 00h • Dec 00°</span></div></a>
     </div>
 
     <div class="section-description">
@@ -195,6 +210,8 @@
         <br>📚 <strong>Galaxipedia</strong> — Technical docs, guides, and development references.
       </p>
     </div>
+
+    <a href="index.html" class="back-link">← Back to Archive</a>
   </div>
 </body>
 </html>
