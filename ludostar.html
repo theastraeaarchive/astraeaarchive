@@ -9,7 +9,6 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background: #0b0c2a;
       font-family: 'EB Garamond', serif;
       color: #fff;
@@ -57,50 +56,14 @@
       animation: twinkle 9s infinite alternate;
     }
 
-    .sparkles::before, .sparkles::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(2px 2px at 35% 75%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(2px 2px at 60% 85%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(2px 2px at 20% 50%, rgba(255,255,255,0.6), transparent);
-      animation: sparkleMove 12s infinite linear, sparkleTwinkle 5s infinite ease-in-out;
-      opacity: 0.6;
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-    }
-
-    .sparkles::after {
-      animation-delay: 4s, 2s;
-      opacity: 0.4;
-    }
-
     @keyframes twinkle {
       from { opacity: 0.2; }
       to { opacity: 1; }
     }
 
-    @keyframes sparkleMove {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-30px); }
-    }
-
-    @keyframes sparkleTwinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-
     @keyframes starPulse {
-      0%, 100% {
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-      }
+      0%, 100% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+      50%      { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
     }
 
     .container {
@@ -108,42 +71,33 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      z-index: 1;
-      position: relative;
       text-align: center;
+      position: relative;
       padding-top: 40px;
     }
 
     .header {
       font-size: 3.2rem;
       color: #e6e1ff;
-      margin-bottom: 20px;
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
                    0 0 25px rgba(160, 150, 255, 0.3),
                    0 0 40px rgba(140, 130, 255, 0.2);
-      letter-spacing: 2px;
       font-weight: 300;
       animation: float-glow 12s ease-in-out infinite;
     }
 
-    @keyframes float-glow {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-6px);
-      }
-    }
-
     .subtitle {
       font-size: 1.2rem;
-      margin-bottom: 40px;
+      margin-top: 10px;
+      margin-bottom: 60px;
       color: #cfc8ff;
       opacity: 0.8;
       font-style: italic;
-      letter-spacing: 1px;
-      text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
     }
 
     .constellation {
@@ -151,6 +105,7 @@
       width: 100vw;
       height: 70vh;
       max-width: 1000px;
+      margin-bottom: 40px;
     }
 
     .star {
@@ -166,16 +121,14 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
-      z-index: 2;
+      transition: transform 0.2s ease, background 0.3s ease;
       animation: starPulse 5s ease-in-out infinite;
+      z-index: 2;
     }
 
     .star:hover {
       transform: scale(1.2);
       background: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
-                  0 0 35px rgba(180, 160, 255, 0.5);
     }
 
     .label {
@@ -183,7 +136,6 @@
       top: 75px;
       font-size: 14px;
       color: #aaa;
-      text-align: center;
       width: 100%;
     }
 
@@ -192,21 +144,17 @@
       font-size: 10px;
       color: #777;
       opacity: 0.6;
-      font-style: italic;
       margin-top: 2px;
-      letter-spacing: 0.5px;
     }
 
     .section-description {
       max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
-      text-align: center;
-      font-family: 'EB Garamond', serif;
+      margin: 0 auto 80px;
+      font-size: 1.1rem;
       color: #dcd9ff;
       opacity: 0.85;
       line-height: 1.6;
-      font-size: 1.1rem;
+      padding: 0 20px;
     }
 
     .section-description h2 {
@@ -221,10 +169,9 @@
   <div class="stars"></div>
   <div class="sparkles"></div>
   <div class="container">
-    <div class="header">
-      Ludostar
-      <div class="subtitle">the constellation of games</div>
-    </div>
+    <div class="header">Ludostar</div>
+    <div class="subtitle">the constellation of games</div>
+
     <div class="constellation">
       <a href="#" class="star" style="top: 5%; left: 20%;">🎮<div class="label">GameVault<span class="coords">RA 01h • Dec +12°</span></div></a>
       <a href="#" class="star" style="top: 5%; left: 45%;">🌠<div class="label">Nebulog<span class="coords">RA 03h • Dec +22°</span></div></a>
@@ -235,10 +182,8 @@
     <div class="section-description">
       <h2>Welcome to Ludostar</h2>
       <p>
-        Ludostar is the cosmic quadrant of Astraea Archive dedicated to interactive experiences and virtual worlds. 
-        Here you’ll find playable projects in the <strong>GameVault</strong>, thoughtful devlogs and ideas in the <strong>Nebulog</strong>,
-        glittering snippets and prototypes from <strong>Celestabits</strong>, and dusted notes from development in <strong>Devdust</strong>.
-        Everything in this galaxy orbits the magic of play.
+        Ludostar is the quadrant of the Astraea Archive devoted to all things games. It’s where play meets purpose, and digital experiences are stardust waiting to be shaped.
+        Explore finished games in the <strong>GameVault</strong>, read stories and logs in the <strong>Nebulog</strong>, discover ideas and tiny builds in <strong>Celestabits</strong>, and uncover thought fragments in <strong>Devdust</strong>.
       </p>
     </div>
   </div>
