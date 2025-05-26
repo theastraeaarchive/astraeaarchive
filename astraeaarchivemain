@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Inner Constellation</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at center, #0b0c2a 0%, #000 100%);
+      color: #fff;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+    }
+
+    .starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://i.imgur.com/3eZ7H0v.png') repeat;
+      z-index: -1;
+      animation: moveStars 200s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 10000px; }
+    }
+
+    .container {
+      padding: 100px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .star {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      position: relative;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+
+    .star:hover {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+
+    .label {
+      position: absolute;
+      top: 75px;
+      font-size: 14px;
+      color: #aaa;
+      text-align: center;
+      max-width: 100px;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-family: 'Georgia', serif;
+      color: #e0d4ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="starfield"></div>
+  <div class="container">
+    <div class="header">My Inner Constellation</div>
+
+    <a href="#" class="star" title="Poem">
+      ✍️<div class="label">Poem</div>
+    </a>
+
+    <a href="#" class="star" title="Game Idea">
+      🎮<div class="label">Game</div>
+    </a>
+
+    <a href="#" class="star" title="Song Clip">
+      🎧<div class="label">Music</div>
+    </a>
+
+    <a href="#" class="star" title="Dream Log">
+      🌙<div class="label">Dream</div>
+    </a>
+
+    <a href="#" class="star" title="About">
+      👁️<div class="label">About</div>
+    </a>
+  </div>
+</body>
+</html>
