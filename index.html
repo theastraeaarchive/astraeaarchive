@@ -120,7 +120,7 @@
       position: absolute;
       background: #aaa;
       height: 2px;
-      transform-origin: left center;
+      transform-origin: 0 0;
       z-index: 1;
     }
   </style>
@@ -130,22 +130,24 @@
   <div class="container">
     <div class="header">astraeaarchive</div>
     <div class="constellation">
-      <!-- Clean 7 shape: top horizontal then diagonal down left -->
-      <a href="#" class="star" style="top: 5%; left: 20%;" title="Poem">✍️<div class="label">Poem</div></a>
-      <a href="#" class="star" style="top: 5%; left: 45%;" title="Game">🎮<div class="label">Game</div></a>
-      <a href="#" class="star" style="top: 5%; left: 70%;" title="Music">🎧<div class="label">Music</div></a>
-      <a href="#" class="star" style="top: 25%; left: 60%;" title="Dream">🌙<div class="label">Dream</div></a>
-      <a href="#" class="star" style="top: 45%; left: 50%;" title="About">👁️<div class="label">About</div></a>
-      <a href="#" class="star" style="top: 65%; left: 40%;" title="Thoughts">🌀<div class="label">Thoughts</div></a>
-      <a href="#" class="star" style="top: 85%; left: 30%;" title="Archive">🗂️<div class="label">Archive</div></a>
+      <!-- Stars for "7" shape -->
+      <div id="s1" class="star" style="top: 5%; left: 20%;" title="Poem">✍️<div class="label">Poem</div></div>
+      <div id="s2" class="star" style="top: 5%; left: 45%;" title="Game">🎮<div class="label">Game</div></div>
+      <div id="s3" class="star" style="top: 5%; left: 70%;" title="Music">🎧<div class="label">Music</div></div>
+      <div id="s4" class="star" style="top: 25%; left: 60%;" title="Dream">🌙<div class="label">Dream</div></div>
+      <div id="s5" class="star" style="top: 45%; left: 50%;" title="About">👁️<div class="label">About</div></div>
+      <div id="s6" class="star" style="top: 65%; left: 40%;" title="Thoughts">🌀<div class="label">Thoughts</div></div>
+      <div id="s7" class="star" style="top: 85%; left: 30%;" title="Archive">🗂️<div class="label">Archive</div></div>
 
-      <!-- Lines forming the "7" -->
-      <div class="line" style="top: 7%; left: 20%; width: 210px; transform: rotate(0deg);"></div>
-      <div class="line" style="top: 7%; left: 45%; width: 210px; transform: rotate(0deg);"></div>
-      <div class="line" style="top: 7%; left: 70%; width: 100px; transform: rotate(115deg);"></div>
-      <div class="line" style="top: 24%; left: 60%; width: 90px; transform: rotate(125deg);"></div>
-      <div class="line" style="top: 44%; left: 50%; width: 90px; transform: rotate(125deg);"></div>
-      <div class="line" style="top: 64%; left: 40%; width: 90px; transform: rotate(125deg);"></div>
+      <!-- SVG lines for precise connection -->
+      <svg width="100%" height="100%" style="position:absolute;top:0;left:0;z-index:1;">
+        <line x1="20%" y1="5%" x2="45%" y2="5%" stroke="#aaa" stroke-width="2" />
+        <line x1="45%" y1="5%" x2="70%" y2="5%" stroke="#aaa" stroke-width="2" />
+        <line x1="70%" y1="5%" x2="60%" y2="25%" stroke="#aaa" stroke-width="2" />
+        <line x1="60%" y1="25%" x2="50%" y2="45%" stroke="#aaa" stroke-width="2" />
+        <line x1="50%" y1="45%" x2="40%" y2="65%" stroke="#aaa" stroke-width="2" />
+        <line x1="40%" y1="65%" x2="30%" y2="85%" stroke="#aaa" stroke-width="2" />
+      </svg>
     </div>
   </div>
 </body>
