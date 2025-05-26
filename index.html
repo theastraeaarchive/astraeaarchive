@@ -61,13 +61,15 @@
     }
 
     .container {
-      padding: 100px 40px;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 60px;
+      justify-content: center;
+      gap: 40px;
       z-index: 1;
       position: relative;
+      text-align: center;
     }
 
     .star {
@@ -102,12 +104,40 @@
     }
 
     .header {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
-      font-family: 'EB Garamond', serif;
+      font-size: 2.5rem;
       color: #e0d4ff;
+      margin-bottom: 20px;
+    }
+
+    .star-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
     }
   </style>
 </head>
-<
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <div class="header">astraeaarchive</div>
+    <div class="star-group">
+      <a href="#" class="star" title="Poem">
+        ✍️<div class="label">Poem</div>
+      </a>
+      <a href="#" class="star" title="Game Idea">
+        🎮<div class="label">Game</div>
+      </a>
+      <a href="#" class="star" title="Song Clip">
+        🎧<div class="label">Music</div>
+      </a>
+      <a href="#" class="star" title="Dream Log">
+        🌙<div class="label">Dream</div>
+      </a>
+      <a href="#" class="star" title="About">
+        👁️<div class="label">About</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
