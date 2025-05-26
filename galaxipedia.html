@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galaxipedia | Ludostar</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a;
+      font-family: 'EB Garamond', serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .stars, .sparkles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-repeat: repeat;
+      background-size: cover;
+    }
+
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 75% 75%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.3), transparent);
+      animation: twinkle 6s infinite alternate;
+    }
+
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 5% 90%, rgba(200,200,255,0.2), transparent),
+        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(220,220,255,0.25), transparent),
+        radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.15), transparent);
+      animation: twinkle 9s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px 100px;
+      z-index: 1;
+    }
+
+    .header {
+      font-size: 3.2rem;
+      color: #e6e1ff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                   0 0 25px rgba(160, 150, 255, 0.3),
+                   0 0 40px rgba(140, 130, 255, 0.2);
+      font-weight: 300;
+      animation: float-glow 12s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #cfc8ff;
+      font-style: italic;
+      margin-bottom: 50px;
+      opacity: 0.8;
+    }
+
+    .section-description {
+      max-width: 800px;
+      font-size: 1.1rem;
+      color: #dcd9ff;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    .section-description h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #f0edff;
+      text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
+    }
+
+    .back-link {
+      margin-top: 60px;
+      font-size: 1rem;
+      color: #bbb;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="sparkles"></div>
+
+  <div class="container">
+    <div class="header">Galaxipedia</div>
+    <div class="subtitle">the archive of technical truths</div>
+
+    <div class="section-description">
+      <h2>Welcome to Galaxipedia</h2>
+      <p>
+        Galaxipedia is the technical library of Ludostar — a collection of knowledge fragments, guides, documentation, and development resources. From engine quirks to rendering logic, this section is a glowing constellation of things you've learned (or need to remember).
+        <br><br>
+        If Stellore is the heart, Galaxipedia is the mind. It captures the precise mechanics, syntax, and structures that form the bones of your creative cosmos.
+      </p>
+    </div>
+
+    <a href="ludostar.html" class="back-link">← Back to Ludostar</a>
+  </div>
+</body>
+</html>
