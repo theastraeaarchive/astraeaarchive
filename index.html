@@ -214,29 +214,28 @@
       <div class="subtitle">where dreams find gravity</div>
     </div>
     <div class="constellation">
-      <div id="s1" class="star" style="top: 5%; left: 20%;">✵<div class="label">Navistra<span class="coords">RA 01h • Dec +20°</span></div></div>
-      <div id="s2" class="star" style="top: 5%; left: 45%;">🎮<div class="label">Ludostar<span class="coords">RA 03h • Dec +42°</span></div></div>
-      <div id="s3" class="star" style="top: 5%; left: 70%;">✍️<div class="label">Inkwellia<span class="coords">RA 05h • Dec -10°</span></div></div>
-      <div id="s4" class="star" style="top: 25%; left: 60%;">🌌<div class="label">Astrarium<span class="coords">RA 08h • Dec +25°</span></div></div>
-      <div id="s5" class="star" style="top: 45%; left: 50%;">🎨<div class="label">Lumenith<span class="coords">RA 10h • Dec +05°</span></div></div>
-      <div id="s6" class="star" style="top: 65%; left: 40%;">🔭<div class="label">Orbitrieve<span class="coords">RA 13h • Dec -18°</span></div></div>
-      <div id="s7" class="star" style="top: 85%; left: 30%;">🗂️<div class="label">Remnora<span class="coords">RA 16h • Dec +33°</span></div></div>
+      <a href="navistra.html" class="star" style="top: 5%; left: 20%;">✵<div class="label">Navistra<span class="coords">RA 01h • Dec +20°</span></div></a>
+      <a href="ludostar.html" class="star" style="top: 5%; left: 45%;">🎮<div class="label">Ludostar<span class="coords">RA 03h • Dec +42°</span></div></a>
+      <a href="inkwellia.html" class="star" style="top: 5%; left: 70%;">✍️<div class="label">Inkwellia<span class="coords">RA 05h • Dec -10°</span></div></a>
+      <a href="astrarium.html" class="star" style="top: 25%; left: 60%;">🌌<div class="label">Astrarium<span class="coords">RA 08h • Dec +25°</span></div></a>
+      <a href="lumenith.html" class="star" style="top: 45%; left: 50%;">🎨<div class="label">Lumenith<span class="coords">RA 10h • Dec +05°</span></div></a>
+      <a href="orbitrieve.html" class="star" style="top: 65%; left: 40%;">🔭<div class="label">Orbitrieve<span class="coords">RA 13h • Dec -18°</span></div></a>
+      <a href="remnora.html" class="star" style="top: 85%; left: 30%;">🗂️<div class="label">Remnora<span class="coords">RA 16h • Dec +33°</span></div></a>
+
       <canvas id="star-lines" width="1000" height="600" style="position:absolute;top:0;left:0;z-index:1;"></canvas>
     </div>
   </div>
 
   <script>
-    const starData = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
+    const stars = document.querySelectorAll('.star');
     let originalPositions = [];
-    let canvas, ctx;
 
     window.onload = () => {
-      canvas = document.getElementById('star-lines');
-      ctx = canvas.getContext('2d');
+      const canvas = document.getElementById('star-lines');
+      const ctx = canvas.getContext('2d');
       const parentRect = document.querySelector('.constellation').getBoundingClientRect();
 
-      originalPositions = starData.map(id => {
-        const el = document.getElementById(id);
+      originalPositions = Array.from(stars).map(el => {
         const rect = el.getBoundingClientRect();
         return {
           el,
@@ -245,41 +244,40 @@
         };
       });
 
-      drawLines(originalPositions);
+      drawLines(originalPositions, ctx);
+
+      document.addEventListener('mousemove', e => {
+        const xOffset = (e.clientX / window.innerWidth - 0.5) * 10;
+        const yOffset = (e.clientY / window.innerHeight - 0.5) * 10;
+
+        const shifted = [];
+
+        originalPositions.forEach((star, i) => {
+          const depth = 1 + i / 10;
+          const dx = xOffset * depth;
+          const dy = yOffset * depth;
+          star.el.style.transform = `translate(${dx}px, ${dy}px)`;
+          shifted.push({ x: star.x + dx, y: star.y + dy });
+        });
+
+        drawLines(shifted, ctx);
+      });
     };
 
-    function drawLines(positions) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function drawLines(positions, ctx) {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       ctx.beginPath();
       ctx.setLineDash([3, 5]);
       ctx.strokeStyle = '#aaa';
       ctx.lineWidth = 2;
+
       for (let i = 0; i < positions.length - 1; i++) {
         ctx.moveTo(positions[i].x, positions[i].y);
         ctx.lineTo(positions[i + 1].x, positions[i + 1].y);
       }
+
       ctx.stroke();
     }
-
-    document.addEventListener('mousemove', e => {
-      const xOffset = (e.clientX / window.innerWidth - 0.5) * 10;
-      const yOffset = (e.clientY / window.innerHeight - 0.5) * 10;
-
-      const shiftedPositions = [];
-
-      originalPositions.forEach((star, i) => {
-        const depth = 1 + i / 10;
-        const dx = xOffset * depth;
-        const dy = yOffset * depth;
-        star.el.style.transform = `translate(${dx}px, ${dy}px)`;
-        shiftedPositions.push({
-          x: star.x + dx,
-          y: star.y + dy
-        });
-      });
-
-      drawLines(shiftedPositions);
-    });
   </script>
 </body>
 </html>
