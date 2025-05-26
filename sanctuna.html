@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanctuna | Astrarium</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a;
+      font-family: 'EB Garamond', serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .stars, .sparkles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-repeat: repeat;
+      background-size: cover;
+    }
+
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 30% 75%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,0.3), transparent);
+      animation: twinkle 6s infinite alternate;
+    }
+
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 5% 85%, rgba(200,200,255,0.2), transparent),
+        radial-gradient(1px 1px at 65% 35%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 80% 15%, rgba(220,220,255,0.25), transparent);
+      animation: twinkle 9s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      min-height: 100vh;
+      padding: 80px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .header {
+      font-size: 3.2rem;
+      color: #e6e1ff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                   0 0 25px rgba(160, 150, 255, 0.3),
+                   0 0 40px rgba(140, 130, 255, 0.2);
+      font-weight: 300;
+      animation: float-glow 12s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #cfc8ff;
+      font-style: italic;
+      margin-bottom: 50px;
+      opacity: 0.8;
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .section-description {
+      max-width: 800px;
+      color: #dcd9ff;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .back-link {
+      margin-top: 60px;
+      font-size: 1rem;
+      color: #bbb;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="sparkles"></div>
+
+  <div class="container">
+    <div class="header">Sanctuna</div>
+    <div class="subtitle">a library of cosmic tools and sacred resources</div>
+
+    <div class="section-description">
+      <p>
+        Sanctuna is the spiritual toolkit of the Astrarium — a place to gather all resources that support your journey. Here you’ll find PDFs, printables, links, apps, and other helpful items curated to enrich your path.
+        <br><br>
+        From rituals to journaling templates, cleansing methods to affirmations, Sanctuna is a gentle constellation for the seeker who needs something grounded, practical, and luminous.
+      </p>
+    </div>
+
+    <a href="astrarium.html" class="back-link">← Back to Astrarium</a>
+  </div>
+</body>
+</html>
