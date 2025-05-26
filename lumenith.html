@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumenith | The Astraea Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a;
+      font-family: 'EB Garamond', serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .stars, .sparkles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-repeat: repeat;
+      background-size: cover;
+    }
+
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 45% 40%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 65% 30%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1px 1px at 85% 70%, rgba(255,255,255,0.4), transparent);
+      animation: twinkle 6s infinite alternate;
+    }
+
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 10% 90%, rgba(200,200,255,0.2), transparent),
+        radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 75% 20%, rgba(220,220,255,0.25), transparent),
+        radial-gradient(1px 1px at 90% 50%, rgba(255,255,255,0.2), transparent);
+      animation: twinkle 9s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    .container {
+      min-height: 100vh;
+      padding: 80px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .header {
+      font-size: 3.2rem;
+      color: #e6e1ff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                   0 0 25px rgba(160, 150, 255, 0.3),
+                   0 0 40px rgba(140, 130, 255, 0.2);
+      font-weight: 300;
+      animation: float-glow 12s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #cfc8ff;
+      font-style: italic;
+      margin-bottom: 50px;
+      opacity: 0.8;
+    }
+
+    .constellation {
+      position: relative;
+      width: 100vw;
+      height: 70vh;
+      max-width: 1000px;
+      margin-bottom: 60px;
+    }
+
+    .star {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.3s ease;
+      animation: starPulse 5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .star:hover {
+      transform: scale(1.2);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes starPulse {
+      0%, 100% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+      50%      { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+    }
+
+    .label {
+      position: absolute;
+      top: 75px;
+      font-size: 14px;
+      color: #aaa;
+      width: 100%;
+    }
+
+    .coords {
+      display: block;
+      font-size: 10px;
+      color: #777;
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    .section-description {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      font-size: 1.1rem;
+      color: #dcd9ff;
+      opacity: 0.85;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    .section-description h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #f0edff;
+      text-shadow: 0 0 10px rgba(200, 180, 255, 0.2);
+    }
+
+    .back-link {
+      font-size: 1rem;
+      color: #bbb;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="sparkles"></div>
+  <div class="container">
+    <div class="header">Lumenith</div>
+    <div class="subtitle">the constellation of creation</div>
+
+    <div class="constellation">
+      <a href="lumicraft.html" class="star" style="top: 10%; left: 25%;">🛠️<div class="label">Lumicraft<span class="coords">RA 02h • Dec +12°</span></div></a>
+      <a href="resonara.html" class="star" style="top: 20%; left: 65%;">🎶<div class="label">Resonara<span class="coords">RA 04h • Dec +23°</span></div></a>
+      <a href="imagisphere.html" class="star" style="top: 35%; left: 45%;">💡<div class="label">Imagisphere<span class="coords">RA 06h • Dec +05°</span></div></a>
+      <a href="orbitome.html" class="star" style="top: 50%; left: 30%;">🌍<div class="label">Orbitome<span class="coords">RA 08h • Dec -10°</span></div></a>
+      <a href="stencilum.html" class="star" style="top: 60%; left: 60%;">📐<div class="label">Stencilum<span class="coords">RA 10h • Dec +03°</span></div></a>
+      <a href="cosmind.html" class="star" style="top: 75%; left: 40%;">🧠<div class="label">Cosmind<span class="coords">RA 12h • Dec -15°</span></div></a>
+    </div>
+
+    <div class="section-description">
+      <h2>Welcome to Lumenith</h2>
+      <p>
+        Lumenith is the creative constellation of the Astraea Archive — a starlit vault of ideas, inspirations, and imaginative projects. From scattered thoughts to full-blown worlds, this is the home for every creative spark.
+        <br><br>
+        🛠️ <strong>Lumicraft</strong> — Ongoing or finished creative projects.  
+        <br>🎶 <strong>Resonara</strong> — Music and playlists that resonate.  
+        <br>💡 <strong>Imagisphere</strong> — Drafts, fragments, and scattered thoughts.  
+        <br>🌍 <strong>Orbitome</strong> — Worldbuilding, characters, universes.  
+        <br>📐 <strong>Stencilum</strong> — Templates, resources, frameworks.  
+        <br>🧠 <strong>Cosmind</strong> — Brain dumps and mental constellations.
+      </p>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Archive</a>
+  </div>
+</body>
+</html>
